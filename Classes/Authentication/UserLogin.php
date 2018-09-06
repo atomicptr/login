@@ -12,6 +12,12 @@ use TYPO3\CMS\Frontend\Authentication\FrontendUserAuthentication;
 class UserLogin extends FrontendUserAuthentication {
 
     /**
+     * @var \TYPO3\CMS\Extbase\SignalSlot\Dispatcher
+     * @inject
+     */
+    protected $signalSlotDispatcher;
+
+    /**
      * Try to log in as TYPO3 frontend user.
      * @param string $username Users username.
      * @param string $password Users password.
@@ -34,6 +40,8 @@ class UserLogin extends FrontendUserAuthentication {
         //$info["db_user"]["username_column"] = "username";
 
         $user = $this->fetchUserRecord($info["db_user"], $username);
+
+        $this->signalSlotDispatcher->dispatch(__CLASS__, "beforeLoginAttempt", ["login", $this, $user]);
 
         if ($user && $passwordProcessor->checkPassword($password, $user["password"])) {
             $this->setSession($user);
