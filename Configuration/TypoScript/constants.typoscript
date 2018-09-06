@@ -1,0 +1,20 @@
+plugin.tx_login {
+
+    # customsubcategory=view=View
+    view {
+        # cat=Login/view; type=string; label=Path to templates
+        templateRootPath =
+
+        # cat=Login/view; type=string; label=Path to template partials
+        partialRootPath =
+
+        # cat=Login/view; type=string; label=Path to template layouts
+        layoutRootPath =
+    }
+
+    # customsubcategory=settings=Settngs
+    settings {
+        # cat=Login/settings; type=int+; label=Storage Folder
+        storagePid =
+    }
+}

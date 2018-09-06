@@ -1,0 +1,26 @@
+<f:security.ifAuthenticated>
+    <f:then>
+        You are authenticated.
+
+        <f:link.action action="submitLogout">
+            Logout
+        </f:link.action>
+    </f:then>
+    <f:else>
+        <h2>Login</h2>
+
+        <f:form action="submitLogin">
+            <div class="form-group">
+                <label for="tx_login_username">Username</label>
+                <f:form.textfield name="user[username]" type="text" id="tx_login_username" placeholder="Username" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label for="tx_login_password">Password</label>
+                <f:form.textfield name="user[password]" type="password" id="tx_login_password" placeholder="Password" class="form-control" />
+            </div>
+
+            <f:form.button type="submit" class="btn btn-primary">Login</f:form.button>
+        </f:form>
+    </f:else>
+</f:security.ifAuthenticated>

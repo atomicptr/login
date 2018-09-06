@@ -1,0 +1,14 @@
+mod.wizards.newContentElement.wizardItems.forms.elements.login >
+mod.wizards.newContentElement.wizardItems.forms {
+    elements.login_loginformplugin {
+        iconIdentifier = content-elements-login
+        title = Login Form
+        description = Better login form
+        tt_content_defValues {
+            CType = list
+            list_type = login_loginformplugin
+        }
+    }
+
+    show :=addToList(login_loginformplugin)
+}

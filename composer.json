@@ -1,0 +1,31 @@
+{
+    "name": "atomicptr/login",
+    "description": "A better login extension for TYPO3.",
+    "type": "typo3-cms-extension",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Christopher Kaster",
+            "email": "me@atomicptr.de"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^3.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Atomicptr\\Login\\": "Classes"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Atomicptr\\Login\\Tests\\": "Tests"
+        }
+    },
+    "scripts": {
+        "lint": "phpcs Classes"
+    }
+}
