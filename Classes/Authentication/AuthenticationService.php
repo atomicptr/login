@@ -34,8 +34,17 @@ class AuthenticationService extends FrontendUserAuthentication {
      * @return boolean
      */
     public function login(string $username, string $password, string $usernameField = "username") : bool {
-        $passwordHasherClass = $GLOBALS["TYPO3_CONF_VARS"]["BE"]["passwordHashing"]["className"] ??
-            \TYPO3\CMS\Core\Crypto\PasswordHashing\Argon2iPasswordHash::class;
+        $passwordHasherClass = $GLOBALS["TYPO3_CONF_VARS"]["BE"]["passwordHashing"]["className"];
+
+        if (!$passwordHasherClass && strpos(TYPO3_version, "8.7") === 0) {
+            if (!\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded("saltedpasswords")) {
+                // crash when trying to login without salted passwords on TYPO3 v8
+                throw new Exception("TYPO3 v".TYPO3_version.", extensions \"saltedpasswords\" is not loaded.");
+            }
+
+            $passwordHasherClass = $GLOBALS["TYPO3_CONF_VARS"]["EXTENSIONS"]["saltedpasswords"]
+                ["FE"]["saltedPWHashingMethod"];
+        }
 
         $passwordProcessor = GeneralUtility::makeInstance($passwordHasherClass);
 
@@ -105,7 +114,7 @@ class AuthenticationService extends FrontendUserAuthentication {
         if ($GLOBALS["TSFE"]->fe_user->user) {
             return $this->frontendUserRepository->findByUid(
                 $GLOBALS["TSFE"]->fe_user->user["uid"]
-            );
+            ) ?? $GLOBALS["TSFE"]->fe_user->user;
         }
 
         return null;

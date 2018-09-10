@@ -1,10 +1,12 @@
 <div class="txlogin-userdetails">
     <h3>
-        <f:translate
-            key="{locallang}:login.authview.greeting"
-            arguments="{
-                0: '<strong>{user.name}</strong>'
-            }" />
+        <f:format.raw>
+            <f:translate
+                key="{locallang}:login.authview.greeting"
+                arguments="{
+                    0: '<strong>{user.name}</strong>'
+                }" />
+        </f:format.raw>
     </h3>
     <p>
         <f:translate key="{locallang}:login.authview.userdetails.welcome" />
