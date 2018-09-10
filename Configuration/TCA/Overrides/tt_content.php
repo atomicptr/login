@@ -10,5 +10,4 @@ call_user_func(function () {
         "login_loginformplugin",
         "EXT:login/Configuration/FlexForms/login_loginformplugin.xml"
     );
-
 });
