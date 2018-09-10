@@ -15,6 +15,6 @@ plugin.tx_login {
     }
 
     persistence {
-        storagePid = {$plugin.tx_login.settings.storagePid}
+        storagePids = {$plugin.tx_login.settings.storagePids}
     }
 }

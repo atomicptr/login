@@ -14,7 +14,7 @@ plugin.tx_login {
 
     # customsubcategory=settings=Settngs
     settings {
-        # cat=Login/settings; type=int+; label=Storage Folder
-        storagePid =
+        # cat=Login/settings; type=string; label=Storage Folder
+        storagePids =
     }
 }

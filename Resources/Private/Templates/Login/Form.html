@@ -12,12 +12,19 @@
         <f:form action="submitLogin">
             <div class="form-group">
                 <label for="tx_login_username">Username</label>
-                <f:form.textfield name="user[username]" type="text" id="tx_login_username" placeholder="Username" class="form-control" />
+                <f:form.textfield name="user[username]" type="text" id="tx_login_username" placeholder="Username"
+                    class="form-control {f:if(condition: '{error}', then: 'is-invalid')}" />
             </div>
 
             <div class="form-group">
                 <label for="tx_login_password">Password</label>
-                <f:form.textfield name="user[password]" type="password" id="tx_login_password" placeholder="Password" class="form-control" />
+                <f:form.textfield name="user[password]" type="password" id="tx_login_password" placeholder="Password"
+                    class="form-control {f:if(condition: '{error}', then: 'is-invalid')}" />
+                <f:if condition="{error}">
+                    <div class="invalid-feedback">
+                        {error} <!-- TODO: add translation stuff and show error message -->
+                    </div>
+                </f:if>
             </div>
 
             <f:form.button type="submit" class="btn btn-primary">Login</f:form.button>

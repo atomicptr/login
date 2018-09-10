@@ -1,0 +1,36 @@
+<T3DataStructure>
+    <meta>
+        <langDisable>1</langDisable>
+    </meta>
+    <sheets>
+        <sDEF>
+            <ROOT>
+                <TCEforms>
+                    <sheetTitle>Login</sheetTitle>
+                </TCEforms>
+                <type>array</type>
+                <el>
+
+                    <settings.redirectAfterLogin>
+                        <TCEforms>
+                            <exclude>0</exclude>
+                            <label>
+                                Redirect after login <!-- TODO: translate me -->
+                            </label>
+                            <config>
+                                <type>group</type>
+                                <internal_type>db</internal_type>
+                                <allowed>pages</allowed>
+                                <size>1</size>
+                                <maxitems>1</maxitems>
+                                <minitems>0</minitems>
+                            </config>
+                        </TCEforms>
+                    </settings.redirectAfterLogin>
+
+                </el>
+            </ROOT>
+        </sDEF>
+
+    </sheets>
+</T3DataStructure>

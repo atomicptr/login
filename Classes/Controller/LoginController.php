@@ -15,10 +15,10 @@ class LoginController extends ActionController {
 
     /**
      * User authentication stuff
-     * @var \Atomicptr\Login\Authentication\UserLogin
+     * @var \Atomicptr\Login\Authentication\AuthenticationService
      * @inject
      */
-    protected $userAuthentication;
+    protected $authentication;
 
     /**
      * @var \TYPO3\CMS\Extbase\SignalSlot\Dispatcher
@@ -31,6 +31,9 @@ class LoginController extends ActionController {
      * @return void
      */
     public function formAction() {
+        if ($this->request->hasArgument("error")) {
+            $this->view->assign("error", $this->request->getArgument("error"));
+        }
     }
 
     /**
@@ -40,15 +43,23 @@ class LoginController extends ActionController {
     public function submitLoginAction() {
         $userData = $this->request->getArgument("user");
 
-        if ($this->userAuthentication->login($userData["username"], $userData["password"])) {
-            // TODO: login success
+        $parameters = [];
+
+        if ($this->authentication->login($userData["username"], $userData["password"])) {
             $this->signalSlotDispatcher->dispatch(__CLASS__, "afterLoginSuccessful", ["login", $this,]);
-            $this->redirectToPage(66);
+
+            $redirectPid = $this->settings["redirectAfterLogin"];
+
+            if ($redirectPid) {
+                $this->redirectToPage($redirectPid);
+            }
+        } else {
+            $this->signalSlotDispatcher->dispatch(__CLASS__, "afterLoginFailed", ["login", $this]);
+
+            $parameters = ["error" => "LoginFailed"];
         }
 
-        // TODO: login failed...
-        $this->redirect("form");
-        //$this->signalSlotDispatcher->dispatch(__CLASS__, "afterLoginFailed", ["login", $this]);
+        $this->redirect("form", null, null, $parameters);
     }
 
     /**
@@ -57,7 +68,7 @@ class LoginController extends ActionController {
      */
     public function submitLogoutAction() {
         $this->signalSlotDispatcher->dispatch(__CLASS__, "beforeLogout", ["login", $this]);
-        $this->userAuthentication->killSession();
+        $this->authentication->logout();
         $this->signalSlotDispatcher->dispatch(__CLASS__, "afterLogout", ["login", $this]);
         $this->redirect("form");
     }

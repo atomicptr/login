@@ -4,12 +4,15 @@ namespace Atomicptr\Login\Authentication;
 
 use TYPO3\CMS\Core\Crypto\PasswordHashing\Argon2iPasswordHash;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+
 use TYPO3\CMS\Frontend\Authentication\FrontendUserAuthentication;
+
+use Atomicptr\Login\Utility\ConfigurationUtility;
 
 /**
  * Handles user login
  */
-class UserLogin extends FrontendUserAuthentication {
+class AuthenticationService extends FrontendUserAuthentication {
 
     /**
      * @var \TYPO3\CMS\Extbase\SignalSlot\Dispatcher
@@ -34,6 +37,14 @@ class UserLogin extends FrontendUserAuthentication {
         ];
 
         $this->checkPid = false;
+
+        $storagePid = ConfigurationUtility::getStoragePids();
+
+        if ($storagePid !== null) {
+            $this->checkPid = true;
+            $this->checkPid_value = $storagePid;
+        }
+
         $info = $this->getauthInfoArray();
 
         // TODO: add option to use email for this instead
@@ -82,7 +93,7 @@ class UserLogin extends FrontendUserAuthentication {
      * Logs out the current user
      * @return void
      */
-    public function killSession() {
+    public function logout() {
         if (!$this->isLoggedIn()) {
             return;
         }
