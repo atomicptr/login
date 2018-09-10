@@ -8,7 +8,7 @@ call_user_func(function ($extKey) {
         "Atomicptr.Login",
         "LoginFormPlugin",
         "Login Form",
-        "EXT:$extKey/ext_icon.png"
+        "EXT:$extKey/ext_icon.svg"
     );
 
     $iconRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance("TYPO3\CMS\Core\Imaging\IconRegistry");
