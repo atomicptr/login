@@ -1,14 +1,24 @@
 <div class="txlogin-greeting">
-    Hello, <strong>
+    <f:format.raw>
         <f:if condition="{user.name}">
-            <f:then>{user.name}</f:then>
-            <f:else>{user.{settings.usernameField}}</f:else>
+            <f:then>
+                <f:translate key="{locallang}:login.authview.greeting"
+                    arguments="{
+                        0: '<strong>{user.name}</strong>'
+                    }" />
+            </f:then>
+            <f:else>
+                <f:translate key="{locallang}:login.authview.greeting"
+                    arguments="{
+                        0: '<strong>{user.{settings.usernameField}}</strong>'
+                    }" />
+            </f:else>
         </f:if>
-    </strong>
+    </f:format.raw>
 
     <br />
 
     <f:link.action action="submitLogout">
-        <i title="Logout" class="fa fas fa-sign-out"></i> Logout
+        <i class="fa fas fa-sign-out"></i> <f:translate key="{locallang}:login.authview.logout" />
     </f:link.action>
 </div>

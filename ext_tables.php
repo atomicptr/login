@@ -12,4 +12,10 @@ call_user_func(function ($extKey) {
     );
 
     $iconRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance("TYPO3\CMS\Core\Imaging\IconRegistry");
+
+    $iconRegistry->registerIcon(
+        "tx-login-icon",
+        \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
+        ["source" => "EXT:login/ext_icon.svg"]
+    );
 }, $_EXTKEY);

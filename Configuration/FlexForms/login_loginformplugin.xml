@@ -6,23 +6,23 @@
         <Main>
             <ROOT>
                 <TCEforms>
-                    <sheetTitle>Authentication</sheetTitle>
+                    <sheetTitle>LLL:EXT:login/Resources/Private/Language/locallang_db.xlf:login.plugin.auth</sheetTitle>
                 </TCEforms>
                 <type>array</type>
                 <el>
 
                     <settings.usernameField>
                         <TCEforms>
-                            <label>View after authentication</label>
+                            <label>LLL:EXT:login/Resources/Private/Language/locallang_db.xlf:login.plugin.auth.usernamefield</label>
                             <config>
                                 <type>select</type>
                                 <items>
                                     <numIndex index="0">
-                                        <numIndex index="0">Username</numIndex>
+                                        <numIndex index="0">LLL:EXT:login/Resources/Private/Language/locallang_db.xlf:login.plugin.auth.username</numIndex>
                                         <numIndex index="1">username</numIndex>
                                     </numIndex>
                                     <numIndex index="1">
-                                        <numIndex index="0">E-Mail</numIndex>
+                                        <numIndex index="0">LLL:EXT:login/Resources/Private/Language/locallang_db.xlf:login.plugin.auth.email</numIndex>
                                         <numIndex index="1">email</numIndex>
                                     </numIndex>
                                 </items>
@@ -32,20 +32,20 @@
 
                     <settings.authenticatedView>
                         <TCEforms>
-                            <label>View after authentication</label>
+                            <label>LLL:EXT:login/Resources/Private/Language/locallang_db.xlf:login.plugin.auth.viewafterauth</label>
                             <config>
                                 <type>select</type>
                                 <items>
                                     <numIndex index="0">
-                                        <numIndex index="0">Greeting</numIndex>
+                                        <numIndex index="0">LLL:EXT:login/Resources/Private/Language/locallang_db.xlf:login.plugin.auth.greeting</numIndex>
                                         <numIndex index="1">greetings</numIndex>
                                     </numIndex>
                                     <numIndex index="1">
-                                        <numIndex index="0">User details</numIndex>
+                                        <numIndex index="0">LLL:EXT:login/Resources/Private/Language/locallang_db.xlf:login.plugin.auth.userdetails</numIndex>
                                         <numIndex index="1">details</numIndex>
                                     </numIndex>
                                     <numIndex index="2">
-                                        <numIndex index="0">Nothing</numIndex>
+                                        <numIndex index="0">LLL:EXT:login/Resources/Private/Language/locallang_db.xlf:login.plugin.auth.nothing</numIndex>
                                         <numIndex index="1">nothing</numIndex>
                                     </numIndex>
                                 </items>
@@ -59,7 +59,7 @@
         <Redirect>
             <ROOT>
                 <TCEforms>
-                    <sheetTitle>Redirects</sheetTitle>
+                    <sheetTitle>LLL:EXT:login/Resources/Private/Language/locallang_db.xlf:login.plugin.redirect</sheetTitle>
                 </TCEforms>
                 <type>array</type>
                 <el>
@@ -68,7 +68,7 @@
                         <TCEforms>
                             <exclude>0</exclude>
                             <label>
-                                Redirect after login <!-- TODO: translate me -->
+                                LLL:EXT:login/Resources/Private/Language/locallang_db.xlf:login.plugin.redirect.login
                             </label>
                             <config>
                                 <type>group</type>
@@ -85,7 +85,7 @@
                         <TCEforms>
                             <exclude>0</exclude>
                             <label>
-                                Redirect after logout <!-- TODO: translate me -->
+                                LLL:EXT:login/Resources/Private/Language/locallang_db.xlf:login.plugin.redirect.logout
                             </label>
                             <config>
                                 <type>group</type>

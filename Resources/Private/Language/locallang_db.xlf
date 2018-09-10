@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="messages">
+        <header>
+            <generator>LFEditor</generator>
+        </header>
+        <body>
+
+            <trans-unit id="login.wizard.title">
+                <source>Login Form</source>
+            </trans-unit>
+            <trans-unit id="login.wizard.description">
+                <source>A better login form for TYPO3.</source>
+            </trans-unit>
+
+            <!-- plugin -->
+            <!-- Authentication tab -->
+            <trans-unit id="login.plugin.auth">
+                <source>Authentication</source>
+            </trans-unit>
+            <trans-unit id="login.plugin.auth.usernamefield">
+                <source>Username field</source>
+            </trans-unit>
+            <trans-unit id="login.plugin.auth.username">
+                <source>Username</source>
+            </trans-unit>
+            <trans-unit id="login.plugin.auth.email">
+                <source>E-Mail</source>
+            </trans-unit>
+            <trans-unit id="login.plugin.auth.viewafterauth">
+                <source>View after authentication</source>
+            </trans-unit>
+            <trans-unit id="login.plugin.auth.greeting">
+                <source>Greeting</source>
+            </trans-unit>
+            <trans-unit id="login.plugin.auth.userdetails">
+                <source>User details</source>
+            </trans-unit>
+            <trans-unit id="login.plugin.auth.nothing">
+                <source>Nothing</source>
+            </trans-unit>
+
+            <!-- Redirects tab -->
+            <trans-unit id="login.plugin.redirect">
+                <source>Redirects</source>
+            </trans-unit>
+            <trans-unit id="login.plugin.redirect.login">
+                <source>Redirect after login</source>
+            </trans-unit>
+            <trans-unit id="login.plugin.redirect.logout">
+                <source>Redirect after logout</source>
+            </trans-unit>
+
+        </body>
+    </file>
+</xliff>

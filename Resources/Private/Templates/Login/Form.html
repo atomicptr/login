@@ -1,3 +1,5 @@
+<f:variable name="locallang" value="LLL:EXT:login/Resources/Private/Language/locallang.xlf" />
+
 <f:security.ifAuthenticated>
     <f:then>
         <f:switch expression="{settings.authenticatedView}">
@@ -10,19 +12,19 @@
         </f:switch>
     </f:then>
     <f:else>
-        <h2>Login</h2>
-
         <f:form action="submitLogin">
             <div class="form-group">
                 <f:switch expression="{settings.usernameField}">
                     <f:case value="username">
-                        <label for="tx_login_username">Username</label>
-                        <f:form.textfield name="user[username]" type="text" id="tx_login_username" placeholder="Username"
+                        <label for="tx_login_username"><f:translate key="{locallang}:login.form.username" /></label>
+                        <f:form.textfield name="user[username]" type="text" id="tx_login_username"
+                            placeholder="{f:translate(key: '{locallang}:login.form.username')}"
                             class="form-control {f:if(condition: '{error}', then: 'is-invalid')}" />
                     </f:case>
                     <f:case value="email">
-                        <label for="tx_login_email">E-Mail</label>
-                        <f:form.textfield name="user[username]" type="text" id="tx_login_email" placeholder="E-Mail"
+                        <label for="tx_login_email"><f:translate key="{locallang}:login.form.email" /></label>
+                        <f:form.textfield name="user[username]" type="text" id="tx_login_email"
+                            placeholder="{f:translate(key: '{locallang}:login.form.email')}"
                             class="form-control {f:if(condition: '{error}', then: 'is-invalid')}" />
                     </f:case>
                     <f:defaultCase>
@@ -32,17 +34,20 @@
             </div>
 
             <div class="form-group">
-                <label for="tx_login_password">Password</label>
-                <f:form.textfield name="user[password]" type="password" id="tx_login_password" placeholder="Password"
+                <label for="tx_login_password"><f:translate key="{locallang}:login.form.password" /></label>
+                <f:form.textfield name="user[password]" type="password" id="tx_login_password"
+                    placeholder="{f:translate(key: '{locallang}:login.form.password')}"
                     class="form-control {f:if(condition: '{error}', then: 'is-invalid')}" />
                 <f:if condition="{error}">
                     <div class="invalid-feedback">
-                        {error} <!-- TODO: add translation stuff and show error message -->
+                        <f:translate key="{locallang}:login.errors.{error}" />
                     </div>
                 </f:if>
             </div>
 
-            <f:form.button type="submit" class="btn btn-primary">Login</f:form.button>
+            <f:form.button type="submit" class="btn btn-primary">
+                <i class="fa fas fa-sign-in"></i> <f:translate key="{locallang}:login.form.button" />
+            </f:form.button>
         </f:form>
     </f:else>
 </f:security.ifAuthenticated>

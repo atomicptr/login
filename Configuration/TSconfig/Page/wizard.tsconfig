@@ -1,9 +1,9 @@
 mod.wizards.newContentElement.wizardItems.forms.elements.login >
 mod.wizards.newContentElement.wizardItems.forms {
     elements.login_loginformplugin {
-        iconIdentifier = content-elements-login
-        title = Login Form
-        description = Better login form
+        iconIdentifier = tx-login-icon
+        title = LLL:EXT:login/Resources/Private/Language/locallang_db.xlf:login.wizard.title
+        description = LLL:EXT:login/Resources/Private/Language/locallang_db.xlf:login.wizard.description
         tt_content_defValues {
             CType = list
             list_type = login_loginformplugin
