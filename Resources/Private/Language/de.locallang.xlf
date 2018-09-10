@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" target-language="de" datatype="plaintext" original="messages">
+        <header>
+            <generator>LFEditor</generator>
+        </header>
+        <body>
+
+            <trans-unit id="login.form.username">
+                <source>Username</source>
+                <target>Benutzername</target>
+            </trans-unit>
+            <trans-unit id="login.form.email">
+                <source>E-Mail</source>
+                <target>E-Mail</target>
+            </trans-unit>
+            <trans-unit id="login.form.password">
+                <source>Password</source>
+                <target>Passwort</target>
+            </trans-unit>
+            <trans-unit id="login.form.button">
+                <source>Login</source>
+                <target>Anmeldung</target>
+            </trans-unit>
+            <trans-unit id="login.authview.logout">
+                <source>Logout</source>
+                <target>Abmelden</target>
+            </trans-unit>
+            <trans-unit id="login.authview.greeting">
+                <source>Hello, %s</source>
+                <target>Hallo, %s</target>
+            </trans-unit>
+            <trans-unit id="login.authview.userdetails.welcome">
+                <source>Welcome back.</source>
+                <target>Willkommen zurück.</target>
+            </trans-unit>
+
+            <!-- Errors -->
+            <trans-unit id="login.errors.LoginFailed">
+                <source>User credentails are wrong, login failed.</source>
+                <target>Benutzerdaten waren falsch, der Login ist fehlgeschlagen.</target>
+            </trans-unit>
+
+        </body>
+    </file>
+</xliff>

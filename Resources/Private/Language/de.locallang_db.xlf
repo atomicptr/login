@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" target-language="de" datatype="plaintext" original="messages">
+        <header>
+            <generator>LFEditor</generator>
+        </header>
+        <body>
+
+            <trans-unit id="login.wizard.title">
+                <source>Login Form</source>
+                <target>Anmeldeformular</target>
+            </trans-unit>
+            <trans-unit id="login.wizard.description">
+                <source>A better login form for TYPO3.</source>
+                <target>Ein besseres Anmeldeformular für TYPO3.</target>
+            </trans-unit>
+
+            <!-- plugin -->
+            <!-- Authentication tab -->
+            <trans-unit id="login.plugin.auth">
+                <source>Authentication</source>
+                <target>Authentifizierung</target>
+            </trans-unit>
+            <trans-unit id="login.plugin.auth.usernamefield">
+                <source>Username field</source>
+                <target>Feld für Benutzernamen</target>
+            </trans-unit>
+            <trans-unit id="login.plugin.auth.username">
+                <source>Username</source>
+                <target>Benutzername</target>
+            </trans-unit>
+            <trans-unit id="login.plugin.auth.email">
+                <source>E-Mail</source>
+                <target>E-Mail</target>
+            </trans-unit>
+            <trans-unit id="login.plugin.auth.viewafterauth">
+                <source>View after authentication</source>
+                <target>Darstellung nach Authentifizierung</target>
+            </trans-unit>
+            <trans-unit id="login.plugin.auth.greeting">
+                <source>Greeting</source>
+                <target>Begrüßung</target>
+            </trans-unit>
+            <trans-unit id="login.plugin.auth.userdetails">
+                <source>User details</source>
+                <target>Benutzerdetails</target>
+            </trans-unit>
+            <trans-unit id="login.plugin.auth.nothing">
+                <source>Nothing</source>
+                <target>Nichts</target>
+            </trans-unit>
+
+            <!-- Redirects tab -->
+            <trans-unit id="login.plugin.redirect">
+                <source>Redirects</source>
+                <target>Weiterleitungen</target>
+            </trans-unit>
+            <trans-unit id="login.plugin.redirect.login">
+                <source>Redirect after login</source>
+                <target>Weiterleitung nach Anmeldung</target>
+            </trans-unit>
+            <trans-unit id="login.plugin.redirect.logout">
+                <source>Redirect after logout</source>
+                <target>Weiterleitung nach Abmeldung</target>
+            </trans-unit>
+
+        </body>
+    </file>
+</xliff>
