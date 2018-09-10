@@ -1,0 +1,14 @@
+<div class="txlogin-greeting">
+    Hello, <strong>
+        <f:if condition="{user.name}">
+            <f:then>{user.name}</f:then>
+            <f:else>{user.{settings.usernameField}}</f:else>
+        </f:if>
+    </strong>
+
+    <br />
+
+    <f:link.action action="submitLogout">
+        <i title="Logout" class="fa fas fa-sign-out"></i> Logout
+    </f:link.action>
+</div>

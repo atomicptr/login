@@ -1,19 +1,34 @@
 <f:security.ifAuthenticated>
     <f:then>
-        You are authenticated.
-
-        <f:link.action action="submitLogout">
-            Logout
-        </f:link.action>
+        <f:switch expression="{settings.authenticatedView}">
+            <f:case value="greetings">
+                <f:render partial="Login/AuthView/Greeting" arguments="{_all}" />
+            </f:case>
+            <f:case value="details">
+                <f:render partial="Login/AuthView/UserDetails" arguments="{_all}" />
+            </f:case>
+        </f:switch>
     </f:then>
     <f:else>
         <h2>Login</h2>
 
         <f:form action="submitLogin">
             <div class="form-group">
-                <label for="tx_login_username">Username</label>
-                <f:form.textfield name="user[username]" type="text" id="tx_login_username" placeholder="Username"
-                    class="form-control {f:if(condition: '{error}', then: 'is-invalid')}" />
+                <f:switch expression="{settings.usernameField}">
+                    <f:case value="username">
+                        <label for="tx_login_username">Username</label>
+                        <f:form.textfield name="user[username]" type="text" id="tx_login_username" placeholder="Username"
+                            class="form-control {f:if(condition: '{error}', then: 'is-invalid')}" />
+                    </f:case>
+                    <f:case value="email">
+                        <label for="tx_login_email">E-Mail</label>
+                        <f:form.textfield name="user[username]" type="text" id="tx_login_email" placeholder="E-Mail"
+                            class="form-control {f:if(condition: '{error}', then: 'is-invalid')}" />
+                    </f:case>
+                    <f:defaultCase>
+                        Unknown username field: "<strong>{settings.usernameField}</strong>"
+                    </f:defaultCase>
+                </f:switch>
             </div>
 
             <div class="form-group">

@@ -5,6 +5,7 @@ namespace Atomicptr\Login\Authentication;
 use TYPO3\CMS\Core\Crypto\PasswordHashing\Argon2iPasswordHash;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
+use TYPO3\CMS\Extbase\Annotation\Inject as inject;
 use TYPO3\CMS\Frontend\Authentication\FrontendUserAuthentication;
 
 use Atomicptr\Login\Utility\ConfigurationUtility;
@@ -21,12 +22,19 @@ class AuthenticationService extends FrontendUserAuthentication {
     protected $signalSlotDispatcher;
 
     /**
+     * @var \TYPO3\CMS\Extbase\Domain\Repository\FrontendUserRepository
+     * @inject
+     */
+    protected $frontendUserRepository;
+
+    /**
      * Try to log in as TYPO3 frontend user.
-     * @param string $username Users username.
-     * @param string $password Users password.
+     * @param string $username      Users username.
+     * @param string $password      Users password.
+     * @param string $usernameField Username field "username" or "email".
      * @return boolean
      */
-    public function login(string $username, string $password) : bool {
+    public function login(string $username, string $password, string $usernameField = "username") : bool {
         // TODO: allow different processors
         $passwordProcessor = GeneralUtility::makeInstance(Argon2iPasswordHash::class);
 
@@ -47,8 +55,7 @@ class AuthenticationService extends FrontendUserAuthentication {
 
         $info = $this->getauthInfoArray();
 
-        // TODO: add option to use email for this instead
-        //$info["db_user"]["username_column"] = "username";
+        $info["db_user"]["username_column"] = $usernameField;
 
         $user = $this->fetchUserRecord($info["db_user"], $username);
 
@@ -87,6 +94,20 @@ class AuthenticationService extends FrontendUserAuthentication {
      */
     public function isLoggedIn() : bool {
         return (bool)$GLOBALS["TSFE"]->loginUser;
+    }
+
+    /**
+     * Returns the currently logged in user
+     * @return mixed
+     */
+    public function getUser() {
+        if ($GLOBALS["TSFE"]->fe_user->user) {
+            return $this->frontendUserRepository->findByUid(
+                $GLOBALS["TSFE"]->fe_user->user["uid"]
+            );
+        }
+
+        return null;
     }
 
     /**

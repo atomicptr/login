@@ -34,6 +34,8 @@ class LoginController extends ActionController {
         if ($this->request->hasArgument("error")) {
             $this->view->assign("error", $this->request->getArgument("error"));
         }
+
+        $this->view->assign("user", $this->authentication->getUser());
     }
 
     /**
@@ -45,7 +47,13 @@ class LoginController extends ActionController {
 
         $parameters = [];
 
-        if ($this->authentication->login($userData["username"], $userData["password"])) {
+        $loginSuccess = $this->authentication->login(
+            $userData["username"],
+            $userData["password"],
+            $this->settings["usernameField"] ?? "username"
+        );
+
+        if ($loginSuccess) {
             $this->signalSlotDispatcher->dispatch(__CLASS__, "afterLoginSuccessful", ["login", $this,]);
 
             $redirectPid = $this->settings["redirectAfterLogin"];
@@ -70,6 +78,13 @@ class LoginController extends ActionController {
         $this->signalSlotDispatcher->dispatch(__CLASS__, "beforeLogout", ["login", $this]);
         $this->authentication->logout();
         $this->signalSlotDispatcher->dispatch(__CLASS__, "afterLogout", ["login", $this]);
+
+        $redirectPid = $this->settings["redirectAfterLogout"];
+
+        if ($redirectPid) {
+            $this->redirectToPage($redirectPid);
+        }
+
         $this->redirect("form");
     }
 
